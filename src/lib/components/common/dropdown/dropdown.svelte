@@ -19,27 +19,39 @@
 
 <div class={cn('inline-flex', props.class)}>
     <DropdownMenu.Root>
-        <DropdownMenu.Trigger asChild let:builder>
-            <div role="button" use:builder.action {...builder}>
-                <Render props={props.trigger} />
-            </div>
+        <DropdownMenu.Trigger>
+            {#snippet child({ props: builder })}
+                <div role="button" {...builder}>
+                    <Render props={props.trigger} />
+                </div>
+            {/snippet}
         </DropdownMenu.Trigger>
 
-        <DropdownMenu.Content
-            align={props.align}
-            class={cn(
-                useCommon('border_color'),
-                useCommon('foreground_color'),
-                useCommon('border_radius.lg'),
-                Dropdown.Content,
-                useTheme('common.dropdown.content')
-            )}
-            transition={flyAndScale}
-            sideOffset={2}
-        >
-            <DropdownMenu.Group>
-                <Render props={props.content} />
-            </DropdownMenu.Group>
-        </DropdownMenu.Content>
+        <DropdownMenu.Portal>
+            <DropdownMenu.Content
+                align={props.align}
+                sideOffset={2}
+                forceMount
+                class={cn(
+                    useCommon('border_color'),
+                    useCommon('foreground_color'),
+                    useCommon('border_radius.lg'),
+                    Dropdown.Content,
+                    useTheme('common.dropdown.content')
+                )}
+            >
+                {#snippet child({ wrapperProps, props: bitsProps, open })}
+                    {#if open}
+                        <div {...wrapperProps}>
+                            <div {...bitsProps} transition:flyAndScale>
+                                <DropdownMenu.Group>
+                                    <Render props={props.content} />
+                                </DropdownMenu.Group>
+                            </div>
+                        </div>
+                    {/if}
+                {/snippet}
+            </DropdownMenu.Content>
+        </DropdownMenu.Portal>
     </DropdownMenu.Root>
 </div>
