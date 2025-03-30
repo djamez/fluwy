@@ -35,7 +35,7 @@
     );
     const arrowIcon = $state(useTheme('common.dropdown.arrow_trailing_icon', Dropdown.ArrowIconRight));
 
-    async function onClick() {
+    async function onclick() {
         if (!props.on_click) return;
 
         await app.handleOperations(props.on_click, context);
@@ -61,12 +61,18 @@
             <Icon size={16} name={arrowIcon} />
         </DropdownMenu.SubTrigger>
 
-        <DropdownMenu.SubContent class={dropdownContent} transition={flyAndScale}>
-            <Render props={props.sub_content} />
+        <DropdownMenu.SubContent class={dropdownContent}>
+            {#snippet child({ props, open })}
+                {#if open}
+                    <div transition:flyAndScale>
+                        <Render props={props.sub_content} />
+                    </div>
+                {/if}
+            {/snippet}
         </DropdownMenu.SubContent>
     </DropdownMenu.Sub>
 {:else}
-    <DropdownMenu.Item class={itemClasses} on:click={onClick}>
+    <DropdownMenu.Item class={itemClasses} {onclick}>
         {#if props.icon}
             <Icon size={16} {...getIcon(props.icon)} />
         {/if}
