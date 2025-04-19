@@ -111,7 +111,7 @@ export function parseCondition(condition: Condition, context: Context): Template
  * Evaluates a complex expression that may contain logical operators (and, or, not)
  * and nested parentheses.
  */
-function evaluateExpression(expression: string, context: Context): boolean {
+export function evaluateExpression(expression: string, context: Context): boolean {
     // Handle parentheses first
     const parenRegex = /\(([^()]+)\)/g;
     let match;
@@ -350,4 +350,32 @@ function parseValue(value: string): ComparisonValue {
     }
 
     return value;
+}
+
+/**
+ * Evaluates a boolean template that can be either a boolean value, string expression,
+ * or a conditional object structure.
+ */
+export function evaluateBoolean(value: unknown, context: Context): boolean {
+    // Handle primitive types
+    if (typeof value === 'boolean') {
+        return value;
+    }
+
+    if (value === null || value === undefined) {
+        return false;
+    }
+
+    // Handle string expressions
+    if (typeof value === 'string') {
+        return evaluateExpression(value, context);
+    }
+
+    // Handle conditional objects
+    if (typeof value === 'object' && !Array.isArray(value)) {
+        const template = parseCondition(value as Condition, context);
+        return Boolean(template);
+    }
+
+    throw new Error(`Unsupported value [${value}] of type: ${typeof value}`);
 }
