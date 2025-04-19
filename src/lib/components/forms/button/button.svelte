@@ -13,8 +13,28 @@
     import type { FormState } from '@/lib/components/forms/form/types.js';
     import type { ButtonProps } from '@/lib/components/forms/button/types.js';
     import { mergeThemes, useTheme } from '@/lib/core/utils/index.js';
+    import { onMount } from 'svelte';
+    import { evaluateBoolean } from '$lib/core/controls/condition/index.js';
 
-    const { component, children, type = 'button', ...props }: ButtonProps = $props();
+    const {
+        component,
+        children,
+        type = 'button',
+        autofocus,
+        on_click,
+        onclick,
+        icon,
+        trailing_icon,
+        content: contentProp,
+        text: textProp,
+        size: sizeProp,
+        color: colorProp,
+        variant: variantProp,
+        loading: loadingProp,
+        disabled: disabledProp,
+        class: classProp,
+        ...props
+    }: ButtonProps = $props();
 
     const componentName = component?.name ?? 'button';
     const context = useContext();
@@ -31,12 +51,17 @@
     let innerLoading = $state(false);
     let innerDisabled = $state(false);
 
-    let text = $derived(compile(props.text ?? '', context.data));
-    let size = $derived(compile(props.size || defaultSize, context.data));
-    let color = $derived(compile(props.color || 'default', context.data));
-    let variant: keyof typeof Variants = $derived(compile(props.variant || 'filled', context.data));
-    let loading = $derived(props.loading || innerLoading);
-    let disabled = $derived(props.disabled || loading || innerDisabled);
+    let text = $derived(compile(textProp ?? '', context.data));
+    let size = $derived(compile(sizeProp || defaultSize, context.data));
+    let color = $derived(compile(colorProp || 'default', context.data));
+    let variant: keyof typeof Variants = $derived(compile(variantProp || 'filled', context.data));
+    let loading = $derived(loadingProp || innerLoading);
+    let disabled = $derived.by(() => {
+        if (loading || innerDisabled) return true;
+
+        return evaluateBoolean(disabledProp, context);
+    });
+    let button = $state<HTMLButtonElement | null>(null);
 
     /**
      * This effect applies the same loading and disabled state if the button is a submit button and is inside a form
@@ -49,9 +74,13 @@
         deferred(() => (innerLoading = form?.submitting ?? false));
     });
 
+    onMount(() => {
+        if (autofocus) button?.focus();
+    });
+
     async function handleClick(e: MouseEvent) {
-        if (!props.on_click) {
-            return props.onclick?.();
+        if (!on_click) {
+            return onclick?.();
         }
 
         e.stopPropagation();
@@ -63,7 +92,7 @@
         deferred(() => (innerLoading = !done));
 
         try {
-            return await app.handleOperations(props.on_click, context);
+            return await app.handleOperations(on_click, context);
         } finally {
             innerLoading = false;
             done = true;
@@ -71,19 +100,19 @@
         }
     }
 
-    let setButtonColor = $derived(
-        color === 'default' ? setCurrentColor('gray', colors) : setCurrentColor(color, colors)
+    let buttonColor = $derived(
+        color === 'default' ? setCurrentColor('gray', colors) : setCurrentColor(color, colors),
     );
     let defaultColorClasses: typeof Variants = $derived(
         color === 'default'
             ? {
-                  filled: 'text-color-900 dark:text-color-contrast focus:ring-color-200 dark:focus:ring-color-700 bg-color-contrast dark:bg-color-700/50 enabled:hover:bg-color-100 dark:enabled:hover:bg-color-700 border-color-200 dark:border-color-700',
-                  outline:
-                      'text-color-900 dark:text-color-contrast enabled:bg-white dark:enabled:bg-color-700/50 enabled:hover:bg-color-100 dark:enabled:hover:bg-color-700 focus:ring-color dark:focus:ring-color border-color-400 dark:border-color-400',
-                  ghost: 'text-color-900 dark:text-color-contrast/75 dark:enabled:hover:text-color-contrast focus:ring-color-200 dark:focus:ring-color-700 enabled:hover:bg-color-100 dark:enabled:hover:bg-color-700 border-transparent dark:border-transparent',
-                  link: 'text-color-900 underline decoration-color-500 enabled:hover:decoration-2 dark:text-color-contrast focus:ring-color-200',
-              }
-            : ({} as typeof Variants)
+                filled: 'text-color-900 dark:text-color-contrast focus:ring-color-200 dark:focus:ring-color-700 bg-color-contrast dark:bg-color-700/50 enabled:hover:bg-color-100 dark:enabled:hover:bg-color-700 border-color-200 dark:border-color-700',
+                outline:
+                    'text-color-900 dark:text-color-contrast enabled:bg-white dark:enabled:bg-color-700/50 enabled:hover:bg-color-100 dark:enabled:hover:bg-color-700 focus:ring-color dark:focus:ring-color border-color-400 dark:border-color-400',
+                ghost: 'text-color-900 dark:text-color-contrast/75 dark:enabled:hover:text-color-contrast focus:ring-color-200 dark:focus:ring-color-700 enabled:hover:bg-color-100 dark:enabled:hover:bg-color-700 border-transparent dark:border-transparent',
+                link: 'text-color-900 underline decoration-color-500 enabled:hover:decoration-2 dark:text-color-contrast focus:ring-color-200',
+            }
+            : ({} as typeof Variants),
     );
 
     function getIcon(propValue: Any): IconProps {
@@ -94,16 +123,22 @@
 </script>
 
 {#snippet content()}
-    {#if props.content}
-        <div class={cn({ 'opacity-0 transition-all duration-150': loading })}><Render props={props.content} /></div>
+    {#if contentProp}
+        <div class={cn({ 'opacity-0 transition-all duration-150': loading })}>
+            <Render props={contentProp} />
+        </div>
     {:else if text}
-        <div class={cn({ 'opacity-0 transition-all duration-150': loading })}><Render props={text} /></div>
+        <div class={cn({ 'opacity-0 transition-all duration-150': loading })}>
+            <Render props={text} />
+        </div>
     {/if}
 {/snippet}
 
 <button
     onclick={handleClick}
+    bind:this={button}
     {type}
+    {...props}
     class={cn(
         commonBorderColor,
         `focus:ring-color relative flex shrink-0 cursor-pointer items-center justify-center gap-1 overflow-hidden whitespace-nowrap shadow-xs ring-offset-white transition-all duration-75 hover:opacity-100 focus:ring-2 focus:ring-offset-2 focus:outline-hidden enabled:active:scale-[0.99] dark:ring-offset-black`,
@@ -111,14 +146,14 @@
         variants[variant],
         commonBorderRadiuses[size],
         defaultColorClasses[variant],
-        props.class,
+        classProp,
         disabled ? 'hover:none cursor-not-allowed opacity-50 hover:opacity-50' : ''
     )}
     {disabled}
-    style={setButtonColor}
+    style={buttonColor}
 >
-    {#if props.icon}
-        <Icon {...getIcon(props.icon)} class={cn({ 'opacity-0 transition-all duration-150': loading })} />
+    {#if icon}
+        <Icon {...getIcon(icon)} class={cn({ 'opacity-0 transition-all duration-150': loading })} />
     {/if}
 
     {#if loading}
@@ -129,8 +164,8 @@
 
     {@render content()}
 
-    {#if props.trailing_icon}
-        <Icon {...getIcon(props.trailing_icon)} class={cn({ 'opacity-0 transition-all duration-150': loading })} />
+    {#if trailing_icon}
+        <Icon {...getIcon(trailing_icon)} class={cn({ 'opacity-0 transition-all duration-150': loading })} />
     {/if}
 
     {#if children}
