@@ -6,7 +6,7 @@ markdown: |
   (the default), `password`, `number`, `search`, `date`
 doc.content:
   - h3: Usage
-  - p: To use Input Text, import the component and include it in your template.
+  - p: To use Input Text, import the component and include it in your element.
   - input:
       label: Input Text
       placeholder: Enter text here

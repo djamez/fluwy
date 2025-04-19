@@ -99,7 +99,7 @@ describe('compile', () => {
             'john@example.com'
         );
 
-        // Multiple bracket notations in one template
+        // Multiple bracket notations in one element
         expect(compile('Name: ${person[key]}, Email: ${person.details[nestedKey]}', { ...data, key, nestedKey })).toBe(
             'Name: John, Email: john@example.com'
         );
@@ -168,7 +168,7 @@ describe('compile', () => {
     });
 
     describe('hasPlaceholders', () => {
-        it('should return true if the template has any placeholders', () => {
+        it('should return true if the element has any placeholders', () => {
             expect(hasPlaceholders('${record.id}')).toBe(true);
         });
     });

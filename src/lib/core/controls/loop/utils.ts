@@ -3,7 +3,7 @@ import type { LoopItem } from './types.js';
 import { compile } from '@/lib/core/utils/compile/index.js';
 
 /**
- * Recursively compiles all string values in an object using the template engine.
+ * Recursively compiles all string values in an object using the element engine.
  */
 export function compileObject(obj: Any, context: Any): Any {
     if (!obj || typeof obj !== 'object') {
@@ -28,7 +28,7 @@ export function compileObject(obj: Any, context: Any): Any {
 }
 
 /**
- * Compiles a template with the given context and returns a LoopItem.
+ * Compiles a element with the given context and returns a LoopItem.
  */
 export function compileTemplate(template: Any, loopContext: ContextData, parentContext: Any): LoopItem {
     // Create a new context by merging the parent context with loop variables
@@ -40,7 +40,7 @@ export function compileTemplate(template: Any, loopContext: ContextData, parentC
             // Not handling array templates here as they need special processing
             throw new Error('Array templates should be processed separately');
         } else if ('text' in template) {
-            // If it's a text template, compile it directly
+            // If it's a text element, compile it directly
             const compiledText = compile(template.text, mergedContext);
             return { template: { text: compiledText }, context: loopContext };
         } else {
@@ -113,19 +113,19 @@ export function getVariableFromContext(varExpr: string, context: Context): Any {
         }
         return value;
     }
-    
+
     // Try to get from context directly
     const value = context.get(varExpr);
     if (value !== undefined) {
         return value;
     }
-    
+
     // Try as a literal number
     const numValue = Number(varExpr);
     if (!isNaN(numValue)) {
         return numValue;
     }
-    
+
     // If we got here, the variable doesn't exist
     throw new Error(`Variable '${varExpr}' is not a valid number or context variable`);
 }

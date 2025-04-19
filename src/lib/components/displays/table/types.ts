@@ -112,7 +112,7 @@ interface TablePaths {
 
 export interface Column {
     /**
-     * The header of the column. Can be a string or a template.
+     * The header of the column. Can be a string or a element.
      */
     header: Any;
     /**
@@ -124,7 +124,7 @@ export interface Column {
      */
     on_click?: Any;
     /**
-     * The content to display in the column. Can be a string or a template.
+     * The content to display in the column. Can be a string or a element.
      */
     content: Any;
 }

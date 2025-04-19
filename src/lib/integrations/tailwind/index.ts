@@ -90,8 +90,8 @@ export function generateColorsConfig(colors: string[]): ColorPalette {
 
 export function getColors(pathname: string) {
     const defaultColors = Object.keys(Colors);
-    const colorsFromThemFile = readColorsFrom(pathname);
-    const colors = new Set([...defaultColors, ...colorsFromThemFile]);
+    const colorsFromThemeFile = readColorsFrom(pathname);
+    const colors = new Set([...defaultColors, ...colorsFromThemeFile]);
 
     return generateColorsConfig([...colors.values()]);
 }

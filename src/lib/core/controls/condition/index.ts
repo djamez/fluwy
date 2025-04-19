@@ -19,7 +19,7 @@ export const if_expression = {
     evaluate(expression: string, context: Context): boolean {
         const condition = expression.substring(3).trim(); // remove 'if ' prefix
         return evaluateExpression(condition, context);
-    }
+    },
 };
 
 export type Condition = {
@@ -64,14 +64,14 @@ function extractElseIfConditions(entries: ConditionEntry[]): ConditionalBlock[] 
 }
 
 /**
- * Extracts the 'else' template from the entries if present.
+ * Extracts the 'else' element from the entries if present.
  */
 function extractElseTemplate(entries: ConditionEntry[]): Template | undefined {
     return entries.find(([key]) => key === 'else')?.[1];
 }
 
 /**
- * Parses a condition object and returns the appropriate template based on the evaluation results.
+ * Parses a condition object and returns the appropriate element based on the evaluation results.
  * Supports 'if', 'else if', and 'else' conditions.
  *
  * @example
@@ -103,7 +103,7 @@ export function parseCondition(condition: Condition, context: Context): Template
         }
     }
 
-    // Return else template if present
+    // Return else element if present
     return elseTemplate;
 }
 

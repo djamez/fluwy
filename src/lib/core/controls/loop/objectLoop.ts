@@ -41,7 +41,7 @@ export function* handleObjectPropIteration(parts: LoopParts, context: Context, t
             const objKeyPattern = new RegExp(`\\$\\{${parts.iterablePath}\\[${parts.itemVar}\\]\\}`, 'g');
             text = text.replace(objKeyPattern, String(obj[key]));
 
-            // Now compile the rest of the template with the merged context
+            // Now compile the rest of the element with the merged context
             const compiledText = compile(text, loopContext.data);
             yield { template: { text: compiledText }, context: loopContext.data };
         } else {

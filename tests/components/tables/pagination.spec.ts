@@ -205,12 +205,14 @@ async function assertFirstPage(page: Page) {
     await expect(page.locator('#main')).toMatchAriaSnapshot(`
       - heading "Simple Table (Example 1)" [level=3]
       - button "Per Page":
+        - text: Per Page
         - img
       - table:
         - rowgroup:
           - row "Name Email Component Email (using Link) Phone Created At Updated At Created By":
             - cell "Name":
               - img
+              - text: Name
             - cell "Email Component"
             - cell "Email (using Link)"
             - cell "Phone"
@@ -218,78 +220,78 @@ async function assertFirstPage(page: Page) {
             - cell "Updated At"
             - cell "Created By"
         - rowgroup:
-          - row /Zaccaria Padfield zpadfield24@fda\\.gov zpadfield24@fda\\.gov \\d+-\\d+-\\d+ Nov \\d+, \\d+ Admin User/:
+          - row "Zaccaria Padfield zpadfield24@fda.gov zpadfield24@fda.gov 383-859-1111 Nov 18, 2024 Admin User":
             - cell "Zaccaria Padfield"
             - cell "zpadfield24@fda.gov":
               - link "zpadfield24@fda.gov"
             - cell "zpadfield24@fda.gov":
               - link "zpadfield24@fda.gov"
-            - cell /\\d+-\\d+-\\d+/:
-              - link /\\d+-\\d+-\\d+/
-            - cell /Nov \\d+, \\d+/
+            - cell "383-859-1111":
+              - link "383-859-1111"
+            - cell "Nov 18, 2024"
             - cell
             - cell "Admin User"
-          - row /Anissa Rocca arocca25@ezinearticles\\.com arocca25@ezinearticles\\.com Nov \\d+, \\d+ 4 months ago Admin User/:
+          - row "Anissa Rocca arocca25@ezinearticles.com arocca25@ezinearticles.com Nov 18, 2024 5 months ago Admin User":
             - cell "Anissa Rocca"
             - cell "arocca25@ezinearticles.com":
               - link "arocca25@ezinearticles.com"
             - cell "arocca25@ezinearticles.com":
               - link "arocca25@ezinearticles.com"
             - cell
-            - cell /Nov \\d+, \\d+/
-            - cell "4 months ago"
+            - cell "Nov 18, 2024"
+            - cell "5 months ago"
             - cell "Admin User"
-          - row /Jarrad O'Donoghue jodonoghue26@desdev\\.cn jodonoghue26@desdev\\.cn Nov \\d+, \\d+ Admin User/:
+          - row "Jarrad O'Donoghue jodonoghue26@desdev.cn jodonoghue26@desdev.cn Nov 18, 2024 Admin User":
             - cell "Jarrad O'Donoghue"
             - cell "jodonoghue26@desdev.cn":
               - link "jodonoghue26@desdev.cn"
             - cell "jodonoghue26@desdev.cn":
               - link "jodonoghue26@desdev.cn"
             - cell
-            - cell /Nov \\d+, \\d+/
+            - cell "Nov 18, 2024"
             - cell
             - cell "Admin User"
-          - row /Codi McIllrick cmcillrick27@narod\\.ru cmcillrick27@narod\\.ru Nov \\d+, \\d+ Admin User/:
+          - row "Codi McIllrick cmcillrick27@narod.ru cmcillrick27@narod.ru Nov 18, 2024 Admin User":
             - cell "Codi McIllrick"
             - cell "cmcillrick27@narod.ru":
               - link "cmcillrick27@narod.ru"
             - cell "cmcillrick27@narod.ru":
               - link "cmcillrick27@narod.ru"
             - cell
-            - cell /Nov \\d+, \\d+/
+            - cell "Nov 18, 2024"
             - cell
             - cell "Admin User"
-          - row /Elisha Doberer edoberer28@miitbeian\\.gov\\.cn edoberer28@miitbeian\\.gov\\.cn Nov \\d+, \\d+ Admin User/:
+          - row "Elisha Doberer edoberer28@miitbeian.gov.cn edoberer28@miitbeian.gov.cn Nov 18, 2024 Admin User":
             - cell "Elisha Doberer"
             - cell "edoberer28@miitbeian.gov.cn":
               - link "edoberer28@miitbeian.gov.cn"
             - cell "edoberer28@miitbeian.gov.cn":
               - link "edoberer28@miitbeian.gov.cn"
             - cell
-            - cell /Nov \\d+, \\d+/
+            - cell "Nov 18, 2024"
             - cell
             - cell "Admin User"
-          - row /Benedicta Inmett binmett29@kickstarter\\.com binmett29@kickstarter\\.com Nov \\d+, \\d+ Admin User/:
+          - row "Benedicta Inmett binmett29@kickstarter.com binmett29@kickstarter.com Nov 18, 2024 Admin User":
             - cell "Benedicta Inmett"
             - cell "binmett29@kickstarter.com":
               - link "binmett29@kickstarter.com"
             - cell "binmett29@kickstarter.com":
               - link "binmett29@kickstarter.com"
             - cell
-            - cell /Nov \\d+, \\d+/
+            - cell "Nov 18, 2024"
             - cell
             - cell "Admin User"
-          - row /Adair Vinker avinker2a@cyberchimps\\.com avinker2a@cyberchimps\\.com Nov \\d+, \\d+ Admin User/:
+          - row "Adair Vinker avinker2a@cyberchimps.com avinker2a@cyberchimps.com Nov 18, 2024 Admin User":
             - cell "Adair Vinker"
             - cell "avinker2a@cyberchimps.com":
               - link "avinker2a@cyberchimps.com"
             - cell "avinker2a@cyberchimps.com":
               - link "avinker2a@cyberchimps.com"
             - cell
-            - cell /Nov \\d+, \\d+/
+            - cell "Nov 18, 2024"
             - cell
             - cell "Admin User"
-          - row /Talia Hartopp thartopp2b@stumbleupon\\.com thartopp2b@stumbleupon\\.com Nov \\d+, \\d+ Admin User/:
+          - row "Talia Hartopp thartopp2b@stumbleupon.com thartopp2b@stumbleupon.com Nov 18, 2024 Admin User":
             - cell "Talia Hartopp"
             - cell "thartopp2b@stumbleupon.com":
               - link "thartopp2b@stumbleupon.com"

@@ -17,7 +17,7 @@ export const loop_expression = {
 
     /**
      * Evaluates a loop expression and returns a generator that yields LoopItem objects.
-     * Each LoopItem contains the compiled template and the context data for that iteration.
+     * Each LoopItem contains the compiled element and the context data for that iteration.
      */
     evaluate(loop: ForLoop, context: Context): Generator<LoopItem> {
         const [expression, template] = Object.entries(loop)[0];

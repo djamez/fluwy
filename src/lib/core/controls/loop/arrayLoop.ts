@@ -33,7 +33,7 @@ export function* handleArrayIteration(parts: LoopParts, context: Context, templa
         // but overrides with loop-specific variables
         const loopContext = context.cloneWith(loopVariables);
 
-        // Handle different template types
+        // Handle different element types
         yield* processArrayTemplateItem(template, loopContext.data, loopContext.data);
 
         index++;
@@ -43,7 +43,11 @@ export function* handleArrayIteration(parts: LoopParts, context: Context, templa
 /**
  * Helper function to process templates for array iterations.
  */
-function* processArrayTemplateItem(template: Any, loopContext: ContextData, contextForCompilation: ContextData): Generator<LoopItem> {
+function* processArrayTemplateItem(
+    template: Any,
+    loopContext: ContextData,
+    contextForCompilation: ContextData
+): Generator<LoopItem> {
     if (typeof template === 'object') {
         if (Array.isArray(template)) {
             for (const templateItem of template) {
@@ -51,10 +55,10 @@ function* processArrayTemplateItem(template: Any, loopContext: ContextData, cont
                 yield { template: compiledTemplate, context: loopContext };
             }
         } else if ('text' in template) {
-            // If it's a text template with potentially other properties, compile everything
+            // If it's a text element with potentially other properties, compile everything
             const compiledTemplate: Record<string, unknown> = {};
-            
-            // Compile all properties in the template object
+
+            // Compile all properties in the element object
             for (const [key, value] of Object.entries(template)) {
                 if (key === 'text' && typeof value === 'string') {
                     compiledTemplate[key] = compile(value, contextForCompilation);
@@ -63,7 +67,7 @@ function* processArrayTemplateItem(template: Any, loopContext: ContextData, cont
                     compiledTemplate[key] = compileNestedValues(value, contextForCompilation);
                 }
             }
-            
+
             yield { template: compiledTemplate, context: loopContext };
         } else {
             const compiledTemplate = compileObject(template, contextForCompilation);
@@ -85,7 +89,7 @@ function compileNestedValues(value: unknown, context: Any): unknown {
         return compile(value, context);
     } else if (typeof value === 'object' && value !== null) {
         if (Array.isArray(value)) {
-            return value.map(item => compileNestedValues(item, context));
+            return value.map((item) => compileNestedValues(item, context));
         } else {
             const result: Record<string, unknown> = {};
             for (const [k, v] of Object.entries(value)) {

@@ -148,49 +148,49 @@ export class Application {
     ): Any {
         // Parse the YAML first to get the structure
         const parsedBody = parse(pageDocument.body) as Any;
-        
+
         // Check if we have a layout
         if (!head?.layout) {
-            // Process the document, but preserve template components
+            // Process the document, but preserve element components
             return this.processDocument(parsedBody, context);
         }
 
         // Handle layout case
         const layout = this.parseLayout(head, context);
-        // Process the body but preserve template components
+        // Process the body but preserve element components
         const processedBody = this.processDocument(parsedBody, context);
-        
+
         return this.replaceSlot(layout, processedBody);
     }
 
     /**
-     * Process a document while preserving template components like loops and conditions
+     * Process a document while preserving element components like loops and conditions
      */
     private processDocument(document: Any, context: Context): Any {
         // If it's an array, process each item
         if (Array.isArray(document)) {
-            return document.map(item => this.processDocument(item, context));
+            return document.map((item) => this.processDocument(item, context));
         }
-        
+
         // If it's not an object, return as is
         if (typeof document !== 'object' || document === null) {
             return document;
         }
-        
+
         // Process object
         const result: Any = {};
-        
+
         for (const [key, value] of Object.entries(document)) {
-            // Check if this is a template component key (like 'for x of y' or 'if condition')
+            // Check if this is a element component key (like 'for x of y' or 'if condition')
             if (key.startsWith('for ') || key.startsWith('if ') || key === 'else' || key.startsWith('else if ')) {
-                // Preserve template component structure
+                // Preserve element component structure
                 result[key] = value;
             } else {
                 // For regular keys, process normally
                 result[key] = this.processValue(value, context);
             }
         }
-        
+
         return result;
     }
 
@@ -202,12 +202,12 @@ export class Application {
         if (typeof value === 'string') {
             return compile(value, context.data, { keepPlaceholders: true });
         }
-        
+
         // If it's an object or array, process recursively
         if (typeof value === 'object' && value !== null) {
             return this.processDocument(value, context);
         }
-        
+
         // Otherwise return as is
         return value;
     }
