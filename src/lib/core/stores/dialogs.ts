@@ -34,7 +34,11 @@ export function useDialogs() {
         },
 
         remove: (id: string) => {
-            const dialog = get(dialogs).find((dialog) => dialog.id === id);
+            const listOfDialogs = get(dialogs);
+            if (!listOfDialogs.length) return;
+
+            const dialog = listOfDialogs.find((dialog) => dialog.id === id);
+
             if (!dialog) throw new Error(`Dialog [${id}] not found`);
 
             dialog.resolve();
@@ -57,5 +61,6 @@ interface Dialog {
     component: string;
     context?: Any;
     resolve: (value?: Any) => void;
+
     [key: string]: Any;
 }

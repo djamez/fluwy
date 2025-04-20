@@ -1,0 +1,121 @@
+layout: test
+---
+void:
+  - &basic_dialog
+    dialog:
+      title: Basic Dialog
+      description: This is a basic dialog with a title and a description.
+  - &basic_dialog_with_a_button
+    dialog:
+      title: Basic Dialog
+      description: This is a basic dialog with a title and a description and a button.
+      footer:
+        button:
+          text: Ok
+          color: primary
+          autofocus: true
+          on_click: close_dialog
+  - &confirmation_dialog
+    dialog:
+      title: Are you sure?
+      description: This operation cannot be undone.
+      footer:
+        - button:
+            text: Cancel
+            variant: ghost
+            on_click: close_dialog
+        - button:
+            text: Confirm
+            color: primary
+            autofocus: true
+            on_click:
+              - sleep: 1000
+              - close_dialog:
+  - &danger_confirmation_dialog
+    dialog:
+      icon: solar:danger-triangle-linear
+      color: destructive
+      title: Are you sure?
+      description: This operation cannot be undone.
+      content:
+        form:
+          data:
+            confirmation:
+          content:
+            input:
+              placeholder: Type "DELETE" to confirm
+              field: confirmation
+            row:
+              class: justify-end
+              content:
+                - button:
+                    text: Cancel
+                    variant: ghost
+                    on_click: close_dialog
+                - button:
+                    text: Deactivate
+                    color: destructive
+                    autofocus: true
+                    disabled: form.data.confirmation is not "DELETE"
+                    on_click:
+                      - sleep: 1000
+                      - close_dialog:
+  - &very_long_dialog
+    dialog:
+      title: This is a very long dialog
+      description: This is a very long dialog with a title and a description and a button.
+      content:
+        30 times with number do:
+          text: This is a very long content of number ${number}
+      footer:
+        button:
+          text: Ok
+          color: primary
+          autofocus: true
+          on_click: close_dialog
+  - &danger_confirmation_dialog_with_content
+    dialog:
+      title: Confirmation
+      icon: solar:danger-triangle-linear
+      color: destructive
+      content:
+        markdown: Are you sure you want to delete the **Testing Account** account? This action cannot be undone.
+      footer:
+        - button:
+            text: Cancel
+            variant: ghost
+            on_click: close_dialog
+        - button:
+            text: Confirm
+            color: destructive
+            autofocus: true
+            on_click:
+              - sleep: 1000
+              - close_dialog:
+container:
+  h4: Testing dialog components
+  row:
+    - button:
+        text: Basic Dialog
+        on_click:
+          open_dialog: *basic_dialog
+    - button:
+        text: Basic Dialog with a button
+        on_click:
+          open_dialog: *basic_dialog_with_a_button
+    - button:
+        text: Confirmation Dialog
+        on_click:
+          open_dialog: *confirmation_dialog
+    - button:
+        text: Danger Confirmation Dialog
+        on_click:
+          open_dialog: *danger_confirmation_dialog
+    - button:
+        text: Very Long Dialog
+        on_click:
+          open_dialog: *very_long_dialog
+    - button:
+        text: Danger Confirmation Dialog with content
+        on_click:
+          open_dialog: *danger_confirmation_dialog_with_content

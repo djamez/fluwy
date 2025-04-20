@@ -1,5 +1,6 @@
 export { default as Avatar } from './avatar/avatar.svelte';
 export { default as Debug } from './debug.svelte';
+export { default as Dialog } from './dialog/dialog.svelte';
 export { default as Dropdown } from './dropdown/dropdown.svelte';
 export { default as DropdownItem } from './dropdown/dropdown-item.svelte';
 export { default as DropdownLabel } from './dropdown/dropdown-label.svelte';
