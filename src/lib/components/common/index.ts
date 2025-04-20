@@ -9,3 +9,4 @@ export { default as Repeat } from './repeat/repeat.svelte';
 export { default as Tab } from './tabs/tab.svelte';
 export { default as TabPanel } from './tabs/tab-panel.svelte';
 export { default as Tabs } from './tabs/tabs-wrapper.svelte';
+export { default as Void } from './void.svelte';
