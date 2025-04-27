@@ -92,30 +92,69 @@ void:
             on_click:
               - sleep: 1000
               - close_dialog:
+  - &dialog_with_loaded_content
+    dialog:
+      title: Dialog with Loaded Content
+      on_open:
+        get: /api/examples/contacts/1
+        vars:
+          contact: response.data.data
+      content:
+        form:
+          data: contact
+          content:
+            - row:
+                - input:
+                    label: First Name
+                    field: firstName
+                - input:
+                    label: Last Name
+                    field: lastName
+            - input:
+                label: Email Address
+                field: email
+                type: email
+                icon: solar:letter-linear
+            - input:
+                label: Phone Number
+                field: phone
+                icon: solar:phone-linear
+      footer:
+        button:
+          text: Save ${contact.firstName}
+          color: primary
+          autofocus: true
+          on_click: close_dialog
 container:
   h4: Testing dialog components
   row:
-    - button:
-        text: Basic Dialog
-        on_click:
-          open_dialog: *basic_dialog
-    - button:
-        text: Basic Dialog with a button
-        on_click:
-          open_dialog: *basic_dialog_with_a_button
-    - button:
-        text: Confirmation Dialog
-        on_click:
-          open_dialog: *confirmation_dialog
-    - button:
-        text: Danger Confirmation Dialog
-        on_click:
-          open_dialog: *danger_confirmation_dialog
-    - button:
-        text: Very Long Dialog
-        on_click:
-          open_dialog: *very_long_dialog
-    - button:
-        text: Danger Confirmation Dialog with content
-        on_click:
-          open_dialog: *danger_confirmation_dialog_with_content
+    class: flex-wrap
+    content:
+      - button:
+          text: Basic Dialog
+          on_click:
+            open_dialog: *basic_dialog
+      - button:
+          text: Basic Dialog with a button
+          on_click:
+            open_dialog: *basic_dialog_with_a_button
+      - button:
+          text: Confirmation Dialog
+          on_click:
+            open_dialog: *confirmation_dialog
+      - button:
+          text: Danger Confirmation Dialog
+          on_click:
+            open_dialog: *danger_confirmation_dialog
+      - button:
+          text: Very Long Dialog
+          on_click:
+            open_dialog: *very_long_dialog
+      - button:
+          text: Danger Confirmation Dialog with content
+          on_click:
+            open_dialog: *danger_confirmation_dialog_with_content
+      - button:
+          text: Open Dialog with Loaded Content
+          on_click:
+            open_dialog: *dialog_with_loaded_content
