@@ -61,3 +61,16 @@ test('very long dialog', async ({ page }) => {
     await page.locator('div').filter({ hasText: 'Ok' }).nth(3).click();
     await checkScreenshot(page);
 });
+
+test('open dialog with loaded content', async ({ page }) => {
+    await page.setViewportSize({ width: 1024, height: 768 });
+    await page.goto('/components/dialogs/tests');
+
+    await page.getByRole('button', { name: 'Open Dialog with Loaded Content', exact: true }).click();
+    await checkScreenshot(page);
+    await expect(page.getByRole('textbox', { name: 'First Name' })).toHaveValue('John');
+    await expect(page.getByRole('textbox', { name: 'Last Name' })).toHaveValue('Doe');
+    await expect(page.getByRole('textbox', { name: 'Email Address' })).toHaveValue('john.doe@mail.com');
+    await expect(page.getByRole('textbox', { name: 'Phone Number' })).toHaveValue('+1 123 456 7890');
+    await checkScreenshot(page);
+});

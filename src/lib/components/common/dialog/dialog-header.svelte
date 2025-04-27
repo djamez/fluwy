@@ -18,7 +18,7 @@
 </script>
 
 <div
-    class={cn('flex items-center relative gap-(--space-between-sm) bg-white/50', props.class)}
+    class={cn('flex items-center relative gap-(--space-between-sm)', props.class)}
     style:--color={`var(--color-${color})`}>
     {#if icon}
         <div

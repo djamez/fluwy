@@ -147,7 +147,7 @@
         commonBorderRadiuses[size],
         defaultColorClasses[variant],
         classProp,
-        disabled ? 'hover:none cursor-not-allowed opacity-50 hover:opacity-50' : ''
+        disabled ? 'hover:none select-none cursor-not-allowed opacity-50 hover:opacity-50' : ''
     )}
     {disabled}
     style={buttonColor}
