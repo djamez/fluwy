@@ -50,6 +50,9 @@ page:
                   text: Button
                   url: /components/buttons
               - menu_item:
+                  text: Dialog
+                  url: /components/dialogs
+              - menu_item:
                   text: Tables
                   url: /components/tables
               - menu_item:
