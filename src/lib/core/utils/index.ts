@@ -17,6 +17,9 @@ export { delay } from './delay/index.js';
 export { get } from './get/index.js';
 export { abort } from './abort/index.js';
 export { compile } from './compile/index.js';
+export { isPrimitive } from './is-primitive/index.js';
+export { isArray } from './is-array/index.js';
+export { element } from '$lib/core/utils/element/index.js';
 export const { cloneDeep } = _;
 
 export { expandObject };
@@ -44,9 +47,7 @@ export const flyAndScale = (
         const [minB, maxB] = scaleB;
 
         const percentage = (valueA - minA) / (maxA - minA);
-        const valueB = percentage * (maxB - minB) + minB;
-
-        return valueB;
+        return percentage * (maxB - minB) + minB;
     };
 
     const styleToString = (style: Record<string, number | string | undefined>): string => {

@@ -5,9 +5,11 @@
     import { DropdownMenu } from 'bits-ui';
     import { Dropdown } from './styles.js';
 
+    const { GroupHeading: DropdownHeading } = DropdownMenu;
+
     const props = $props();
 </script>
 
-<DropdownMenu.Label class={cn(Dropdown.Label, useTheme('common.dropdown.label'), props?.class)}>
+<DropdownHeading class={cn(Dropdown.Label, useTheme('common.dropdown.label'), props?.class)}>
     <Render {props} />
-</DropdownMenu.Label>
+</DropdownHeading>

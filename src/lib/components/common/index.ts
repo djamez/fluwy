@@ -1,5 +1,6 @@
 export { default as Avatar } from './avatar/avatar.svelte';
 export { default as Debug } from './debug.svelte';
+export { default as Dialog } from './dialog/dialog.svelte';
 export { default as Dropdown } from './dropdown/dropdown.svelte';
 export { default as DropdownItem } from './dropdown/dropdown-item.svelte';
 export { default as DropdownLabel } from './dropdown/dropdown-label.svelte';
@@ -9,3 +10,4 @@ export { default as Repeat } from './repeat/repeat.svelte';
 export { default as Tab } from './tabs/tab.svelte';
 export { default as TabPanel } from './tabs/tab-panel.svelte';
 export { default as Tabs } from './tabs/tabs-wrapper.svelte';
+export { default as Void } from './void.svelte';

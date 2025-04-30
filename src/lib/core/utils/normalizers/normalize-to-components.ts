@@ -27,7 +27,7 @@ function isComponentProps(obj: Record<string, unknown>): boolean {
 }
 
 /**
- * Normalize a template into an array of component schemas.
+ * Normalize a element into an array of component schemas.
  * Handles primitive values, arrays, and objects, with special handling for conditional statements.
  */
 export function normalizeToComponents(input: Template): ComponentSchema[] {

@@ -11,6 +11,7 @@ const config: PlaywrightTestConfig = {
     reporter: process.env.CI ? [['github'], ['html', { open: 'never' }]] : 'list',
     use: {
         viewport: { width: 1920, height: 1080 },
+        timezoneId: 'UTC',
     },
 };
 

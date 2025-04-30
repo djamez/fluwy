@@ -113,7 +113,7 @@ describe('loop controls', () => {
             const items = Array.from(result);
             expect(items.length).toBe(6); // 3 items × 2 templates
 
-            // Verify the template values
+            // Verify the element values
             expect(items[0].template).toEqual({ h1: 'Title a' });
             expect(items[1].template).toEqual({ text: 'Item: a' });
             expect(items[2].template).toEqual({ h1: 'Title b' });
@@ -660,7 +660,7 @@ describe('loop controls', () => {
                 test: (items) => {
                     expect(items.length).toBe(2);
 
-                    // Test template properties
+                    // Test element properties
                     expect(items[0].template).toEqual({ mycomponent: 'User Alice is 25 years old' });
                     expect(items[1].template).toEqual({ mycomponent: 'User Bob is 30 years old' });
 

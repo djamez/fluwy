@@ -71,7 +71,7 @@ describe('App', () => {
             });
         });
 
-        it('doesnt parse "template" components with context', async () => {
+        it('doesnt parse "element" components with context', async () => {
             // Add the loop.yaml file to the testing files
             createFiles(testingDir, {
                 'pages/loop.yaml': readFile(__dirname, 'pages/loop.yaml'),
@@ -348,7 +348,7 @@ describe('App', () => {
 
             app.plug(testPlugin as Plugin);
 
-            // Check if plugin is registered
+            // Check if the plugin is registered
             expect(app['registeredPlugins']).toContain('test_plugin');
 
             // Check if operations are registered

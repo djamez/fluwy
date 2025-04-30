@@ -23,7 +23,7 @@ export interface FormProps extends ElementProps {
     /**
      * The data to initialize the form with.
      */
-    data?: Record<string, Any>;
+    data?: Record<string, Any> | string;
     method?: 'POST' | 'GET' | 'DIALOG';
 
     /**

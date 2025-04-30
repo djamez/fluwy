@@ -4,7 +4,6 @@
     import { Render } from '@/lib/core/index.js';
     import { cn } from '@/lib/core/utils/index.js';
     import { Collapsible } from 'bits-ui';
-    import { slide } from 'svelte/transition';
     import { useCommon } from '../common/styles.js';
     import Spacer from './spacer.svelte';
     import { Icon } from '../common/index.js';
@@ -62,7 +61,6 @@
     </Collapsible.Trigger>
 
     <Collapsible.Content
-        transition={slide}
         class={cn(
             commonBorderColor,
             'ml-[19.5px] pl-1 opacity-0 transition-all duration-75',

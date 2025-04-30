@@ -37,7 +37,7 @@ describe('vars operation', () => {
         expect(context.get('greeting')).toBe('Hello Mr');
     });
 
-    it('should handle complex template expressions', async () => {
+    it('should handle complex element expressions', async () => {
         context.set('user', { firstName: 'John', lastName: 'Doe' });
         context.set('count', 3);
 

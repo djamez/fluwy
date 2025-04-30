@@ -7,6 +7,7 @@
         normalizeToComponents,
         type ComponentSchema,
     } from '@/lib/core/utils/normalizers/normalize-to-components.js';
+    import { utils } from '@/lib/core/index.js';
 
     interface RenderProps {
         props: Any;
@@ -22,22 +23,12 @@
 
     const reservedNames = ['slot', 'content', 'class', 'vars'];
     const components = $derived.by(() => {
-        if (isPrimitive(props)) return normalizeToComponents([props]);
-        if (isArray(props)) return normalizeToComponents(Object.values(props));
+        if (utils.isPrimitive(props)) return normalizeToComponents([props]);
+        if (utils.isArray(props)) return normalizeToComponents(Object.values(props));
         if (typeof props === 'object' && 'content' in props) return normalizeToComponents(props.content);
 
         return normalizeToComponents(props);
     });
-
-    function isPrimitive(value: Any): boolean {
-        return (
-            typeof value === 'string' ||
-            typeof value === 'number' ||
-            typeof value === 'boolean' ||
-            value === null ||
-            value === undefined
-        );
-    }
 
     function notFound(component: string) {
         const isReserved = reservedNames.includes(component);
@@ -52,16 +43,10 @@
     function normalizeTemplate(component: ComponentSchema) {
         const template = component.template;
 
-        if (isPrimitive(template)) return { content: template };
-        if (isArray(template)) return { content: template };
+        if (utils.isPrimitive(template)) return { content: template };
+        if (utils.isArray(template)) return { content: template };
 
         return template;
-    }
-
-    function isArray(props: Any) {
-        const array = Boolean(Array.isArray(props) || props['0']);
-
-        return array && typeof props !== 'string';
     }
 </script>
 

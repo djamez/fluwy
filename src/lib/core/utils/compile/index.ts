@@ -37,7 +37,7 @@ export function compile(
     // Expand the context object to handle dot notation
     const expandedContext = expandObject(cloneDeep(context));
 
-    // Use a regular expression to find all placeholders in the template
+    // Use a regular expression to find all placeholders in the element
     const compiled = template.replace(PLACEHOLDERS, function (_match, placeholder) {
         // Handle multiple bracket notations and string literals
         let value: Any;

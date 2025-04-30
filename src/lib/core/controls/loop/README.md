@@ -14,7 +14,7 @@ This well-defined structure ensures type safety and maintains a clear separation
 Example of a `LoopItem` object:
 ```typescript
 {
-  template: { text: "User: Alice" }, // The compiled template
+  template: { text: "User: Alice" }, // The compiled element
   context: { user: { name: "Alice", age: 25 }, index: 0 } // The iteration-specific context
 }
 ```
