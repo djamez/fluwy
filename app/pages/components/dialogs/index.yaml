@@ -207,12 +207,7 @@ doc.content:
                     content:
                       form:
                         on_submit:
-                          - post:
-                              url: /api/examples/contacts
-                              data: form.data
-                              on_error:
-                                set_form_errors:
-                          - close_dialog:
+                          close_dialog:
                         content:
                           - row:
                               - input:
@@ -262,12 +257,7 @@ doc.content:
                         content:
                           form:
                             on_submit:
-                              - post:
-                                  url: /api/examples/contacts
-                                  data: form.data
-                                  on_error:
-                                    set_form_errors:
-                              - close_dialog:
+                              close_dialog:
                             content:
                               - row:
                                   - input:

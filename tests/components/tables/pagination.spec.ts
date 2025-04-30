@@ -190,33 +190,42 @@ test('pagination behaviour', async ({ page }) => {
           - row /Mayer Schenkel mschenkel2@zdnet\\.com mschenkel2@zdnet\\.com \\d+-\\d+-\\d+ Nov \\d+, \\d+ Admin User/:
             - cell "Mayer Schenkel"
             - cell "mschenkel2@zdnet.com":
-              - link "mschenkel2@zdnet.com"
+              - link "mschenkel2@zdnet.com":
+                - /url: mailto:mschenkel2@zdnet.com
             - cell "mschenkel2@zdnet.com":
-              - link "mschenkel2@zdnet.com"
+              - link "mschenkel2@zdnet.com":
+                - /url: mailto:mschenkel2@zdnet.com
             - cell /\\d+-\\d+-\\d+/:
-              - link /\\d+-\\d+-\\d+/
+              - link /\\d+-\\d+-\\d+/:
+                - /url: tel:961-970-7997
             - cell /Nov \\d+, \\d+/
             - cell
             - cell "Admin User"
           - row /Mycah Piola mpiola1@delicious\\.com mpiola1@delicious\\.com \\d+-\\d+-\\d+ Nov \\d+, \\d+ Admin User/:
             - cell "Mycah Piola"
             - cell "mpiola1@delicious.com":
-              - link "mpiola1@delicious.com"
+              - link "mpiola1@delicious.com":
+                - /url: mailto:mpiola1@delicious.com
             - cell "mpiola1@delicious.com":
-              - link "mpiola1@delicious.com"
+              - link "mpiola1@delicious.com":
+                - /url: mailto:mpiola1@delicious.com
             - cell /\\d+-\\d+-\\d+/:
-              - link /\\d+-\\d+-\\d+/
+              - link /\\d+-\\d+-\\d+/:
+                - /url: tel:277-918-0300
             - cell /Nov \\d+, \\d+/
             - cell
             - cell "Admin User"
           - row /Ree Eannetta reannetta0@g\\.co reannetta0@g\\.co \\d+-\\d+-\\d+ Nov \\d+, \\d+ Admin User/:
             - cell "Ree Eannetta"
             - cell "reannetta0@g.co":
-              - link "reannetta0@g.co"
+              - link "reannetta0@g.co":
+                - /url: mailto:reannetta0@g.co
             - cell "reannetta0@g.co":
-              - link "reannetta0@g.co"
+              - link "reannetta0@g.co":
+                - /url: mailto:reannetta0@g.co
             - cell /\\d+-\\d+-\\d+/:
-              - link /\\d+-\\d+-\\d+/
+              - link /\\d+-\\d+-\\d+/:
+                - /url: tel:239-782-5849
             - cell /Nov \\d+, \\d+/
             - cell
             - cell "Admin User"
@@ -232,14 +241,12 @@ async function assertFirstPage(page: Page) {
     await expect(page.locator('#main')).toMatchAriaSnapshot(`
       - heading "Simple Table (Example 1)" [level=3]
       - button "Per Page":
-        - text: Per Page
         - img
       - table:
         - rowgroup:
           - row "Name Email Component Email (using Link) Phone Created At Updated At Created By":
             - cell "Name":
               - img
-              - text: Name
             - cell "Email Component"
             - cell "Email (using Link)"
             - cell "Phone"
@@ -247,83 +254,100 @@ async function assertFirstPage(page: Page) {
             - cell "Updated At"
             - cell "Created By"
         - rowgroup:
-          - row "Zaccaria Padfield zpadfield24@fda.gov zpadfield24@fda.gov 383-859-1111 Nov 18, 2024 Admin User":
+          - row /Zaccaria Padfield zpadfield24@fda\\.gov zpadfield24@fda\\.gov \\d+-\\d+-\\d+ Nov \\d+, \\d+ Admin User/:
             - cell "Zaccaria Padfield"
             - cell "zpadfield24@fda.gov":
-              - link "zpadfield24@fda.gov"
+              - link "zpadfield24@fda.gov":
+                - /url: mailto:zpadfield24@fda.gov
             - cell "zpadfield24@fda.gov":
-              - link "zpadfield24@fda.gov"
-            - cell "383-859-1111":
-              - link "383-859-1111"
-            - cell "Nov 18, 2024"
+              - link "zpadfield24@fda.gov":
+                - /url: mailto:zpadfield24@fda.gov
+            - cell /\\d+-\\d+-\\d+/:
+              - link /\\d+-\\d+-\\d+/:
+                - /url: tel:383-859-1111
+            - cell /Nov \\d+, \\d+/
             - cell
             - cell "Admin User"
-          - row "Anissa Rocca arocca25@ezinearticles.com arocca25@ezinearticles.com Nov 18, 2024 5 months ago Admin User":
+          - row /Anissa Rocca arocca25@ezinearticles\\.com arocca25@ezinearticles\\.com Nov \\d+, \\d+ 5 months ago Admin User/:
             - cell "Anissa Rocca"
             - cell "arocca25@ezinearticles.com":
-              - link "arocca25@ezinearticles.com"
+              - link "arocca25@ezinearticles.com":
+                - /url: mailto:arocca25@ezinearticles.com
             - cell "arocca25@ezinearticles.com":
-              - link "arocca25@ezinearticles.com"
+              - link "arocca25@ezinearticles.com":
+                - /url: mailto:arocca25@ezinearticles.com
             - cell
-            - cell "Nov 18, 2024"
+            - cell /Nov \\d+, \\d+/
             - cell "5 months ago"
             - cell "Admin User"
-          - row "Jarrad O'Donoghue jodonoghue26@desdev.cn jodonoghue26@desdev.cn Nov 18, 2024 Admin User":
+          - row /Jarrad O'Donoghue jodonoghue26@desdev\\.cn jodonoghue26@desdev\\.cn Nov \\d+, \\d+ Admin User/:
             - cell "Jarrad O'Donoghue"
             - cell "jodonoghue26@desdev.cn":
-              - link "jodonoghue26@desdev.cn"
+              - link "jodonoghue26@desdev.cn":
+                - /url: mailto:jodonoghue26@desdev.cn
             - cell "jodonoghue26@desdev.cn":
-              - link "jodonoghue26@desdev.cn"
+              - link "jodonoghue26@desdev.cn":
+                - /url: mailto:jodonoghue26@desdev.cn
             - cell
-            - cell "Nov 18, 2024"
+            - cell /Nov \\d+, \\d+/
             - cell
             - cell "Admin User"
-          - row "Codi McIllrick cmcillrick27@narod.ru cmcillrick27@narod.ru Nov 18, 2024 Admin User":
+          - row /Codi McIllrick cmcillrick27@narod\\.ru cmcillrick27@narod\\.ru Nov \\d+, \\d+ Admin User/:
             - cell "Codi McIllrick"
             - cell "cmcillrick27@narod.ru":
-              - link "cmcillrick27@narod.ru"
+              - link "cmcillrick27@narod.ru":
+                - /url: mailto:cmcillrick27@narod.ru
             - cell "cmcillrick27@narod.ru":
-              - link "cmcillrick27@narod.ru"
+              - link "cmcillrick27@narod.ru":
+                - /url: mailto:cmcillrick27@narod.ru
             - cell
-            - cell "Nov 18, 2024"
+            - cell /Nov \\d+, \\d+/
             - cell
             - cell "Admin User"
-          - row "Elisha Doberer edoberer28@miitbeian.gov.cn edoberer28@miitbeian.gov.cn Nov 18, 2024 Admin User":
+          - row /Elisha Doberer edoberer28@miitbeian\\.gov\\.cn edoberer28@miitbeian\\.gov\\.cn Nov \\d+, \\d+ Admin User/:
             - cell "Elisha Doberer"
             - cell "edoberer28@miitbeian.gov.cn":
-              - link "edoberer28@miitbeian.gov.cn"
+              - link "edoberer28@miitbeian.gov.cn":
+                - /url: mailto:edoberer28@miitbeian.gov.cn
             - cell "edoberer28@miitbeian.gov.cn":
-              - link "edoberer28@miitbeian.gov.cn"
+              - link "edoberer28@miitbeian.gov.cn":
+                - /url: mailto:edoberer28@miitbeian.gov.cn
             - cell
-            - cell "Nov 18, 2024"
+            - cell /Nov \\d+, \\d+/
             - cell
             - cell "Admin User"
-          - row "Benedicta Inmett binmett29@kickstarter.com binmett29@kickstarter.com Nov 18, 2024 Admin User":
+          - row /Benedicta Inmett binmett29@kickstarter\\.com binmett29@kickstarter\\.com Nov \\d+, \\d+ Admin User/:
             - cell "Benedicta Inmett"
             - cell "binmett29@kickstarter.com":
-              - link "binmett29@kickstarter.com"
+              - link "binmett29@kickstarter.com":
+                - /url: mailto:binmett29@kickstarter.com
             - cell "binmett29@kickstarter.com":
-              - link "binmett29@kickstarter.com"
+              - link "binmett29@kickstarter.com":
+                - /url: mailto:binmett29@kickstarter.com
             - cell
-            - cell "Nov 18, 2024"
+            - cell /Nov \\d+, \\d+/
             - cell
             - cell "Admin User"
-          - row "Adair Vinker avinker2a@cyberchimps.com avinker2a@cyberchimps.com Nov 18, 2024 Admin User":
+          - row /Adair Vinker avinker2a@cyberchimps\\.com avinker2a@cyberchimps\\.com Nov \\d+, \\d+ Admin User/:
             - cell "Adair Vinker"
             - cell "avinker2a@cyberchimps.com":
-              - link "avinker2a@cyberchimps.com"
+              - link "avinker2a@cyberchimps.com":
+                - /url: mailto:avinker2a@cyberchimps.com
             - cell "avinker2a@cyberchimps.com":
-              - link "avinker2a@cyberchimps.com"
+              - link "avinker2a@cyberchimps.com":
+                - /url: mailto:avinker2a@cyberchimps.com
             - cell
-            - cell "Nov 18, 2024"
+            - cell /Nov \\d+, \\d+/
             - cell
             - cell "Admin User"
-          - row "Talia Hartopp thartopp2b@stumbleupon.com thartopp2b@stumbleupon.com Nov 18, 2024 Admin User":
+          - row /Talia Hartopp thartopp2b@stumbleupon\\.com thartopp2b@stumbleupon\\.com Nov \\d+, \\d+ Admin User/:
             - cell "Talia Hartopp"
             - cell "thartopp2b@stumbleupon.com":
-              - link "thartopp2b@stumbleupon.com"
+              - link "thartopp2b@stumbleupon.com":
+                - /url: mailto:thartopp2b@stumbleupon.com
             - cell "thartopp2b@stumbleupon.com":
-              - link "thartopp2b@stumbleupon.com"
+              - link "thartopp2b@stumbleupon.com":
+                - /url: mailto:thartopp2b@stumbleupon.com
             - cell
             - cell /Nov \\d+, \\d+/
             - cell
@@ -331,9 +355,11 @@ async function assertFirstPage(page: Page) {
           - row /Blanca Spriddle bspriddle2c@marketwatch\\.com bspriddle2c@marketwatch\\.com Nov \\d+, \\d+ Admin User/:
             - cell "Blanca Spriddle"
             - cell "bspriddle2c@marketwatch.com":
-              - link "bspriddle2c@marketwatch.com"
+              - link "bspriddle2c@marketwatch.com":
+                - /url: mailto:bspriddle2c@marketwatch.com
             - cell "bspriddle2c@marketwatch.com":
-              - link "bspriddle2c@marketwatch.com"
+              - link "bspriddle2c@marketwatch.com":
+                - /url: mailto:bspriddle2c@marketwatch.com
             - cell
             - cell /Nov \\d+, \\d+/
             - cell
@@ -341,9 +367,11 @@ async function assertFirstPage(page: Page) {
           - row /Ivy Melloi imelloi23@soup\\.io imelloi23@soup\\.io Nov \\d+, \\d+ Admin User/:
             - cell "Ivy Melloi"
             - cell "imelloi23@soup.io":
-              - link "imelloi23@soup.io"
+              - link "imelloi23@soup.io":
+                - /url: mailto:imelloi23@soup.io
             - cell "imelloi23@soup.io":
-              - link "imelloi23@soup.io"
+              - link "imelloi23@soup.io":
+                - /url: mailto:imelloi23@soup.io
             - cell
             - cell /Nov \\d+, \\d+/
             - cell
