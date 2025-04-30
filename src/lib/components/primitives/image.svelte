@@ -5,6 +5,7 @@
         light: string;
         dark: string;
     }
+
     interface ImageProps {
         class?: string;
         src: string | StringMode;
@@ -16,12 +17,8 @@
     const src = $derived(() => {
         if (!hasMode) return props.src as string;
 
-        return (props.src as StringMode)[$mode ?? 'light'];
+        return (props.src as StringMode)[mode.current ?? 'light'];
     });
 </script>
 
-{#if hasMode && $mode}
-    <img src={src()} alt={props.alt} class={props.class} />
-{:else}
-    <img src={src()} alt={props.alt} class={props.class} />
-{/if}
+<img src={src()} alt={props.alt} class={props.class} />

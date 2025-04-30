@@ -49,7 +49,7 @@
     $effect(() => {
         if (!browser) return;
         if (!outerRadius) return;
-        if ($userPrefersMode) updateStyle(style!);
+        if (userPrefersMode.current) updateStyle(style!);
     });
 
     function updateStyle(style: CSSStyleDeclaration) {
