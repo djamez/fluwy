@@ -28,31 +28,39 @@ test('pagination behaviour', async ({ page }) => {
           - row /Rochester Catherall rcatherallrr@youtube\\.com rcatherallrr@youtube\\.com \\d+-\\d+-\\d+ Nov \\d+, \\d+ Admin User/:
             - cell "Rochester Catherall"
             - cell "rcatherallrr@youtube.com":
-              - link "rcatherallrr@youtube.com"
+              - link "rcatherallrr@youtube.com":
+                - /url: mailto:rcatherallrr@youtube.com
             - cell "rcatherallrr@youtube.com":
-              - link "rcatherallrr@youtube.com"
+              - link "rcatherallrr@youtube.com":
+                - /url: mailto:rcatherallrr@youtube.com
             - cell /\\d+-\\d+-\\d+/:
-              - link /\\d+-\\d+-\\d+/
+              - link /\\d+-\\d+-\\d+/:
+                - /url: tel:383-859-1091
             - cell /Nov \\d+, \\d+/
             - cell
             - cell "Admin User"
           - row /Demetris Jeaves djeavesrq@census\\.gov djeavesrq@census\\.gov \\d+-\\d+-\\d+ Nov \\d+, \\d+ Admin User/:
             - cell "Demetris Jeaves"
             - cell "djeavesrq@census.gov":
-              - link "djeavesrq@census.gov"
+              - link "djeavesrq@census.gov":
+                - /url: mailto:djeavesrq@census.gov
             - cell "djeavesrq@census.gov":
-              - link "djeavesrq@census.gov"
+              - link "djeavesrq@census.gov":
+                - /url: mailto:djeavesrq@census.gov
             - cell /\\d+-\\d+-\\d+/:
-              - link /\\d+-\\d+-\\d+/
+              - link /\\d+-\\d+-\\d+/:
+                - /url: tel:823-362-8272
             - cell /Nov \\d+, \\d+/
             - cell
             - cell "Admin User"
           - row /Dedra Ben dbenrp@dedecms\\.com dbenrp@dedecms\\.com Nov \\d+, \\d+ Admin User/:
             - cell "Dedra Ben"
             - cell "dbenrp@dedecms.com":
-              - link "dbenrp@dedecms.com"
+              - link "dbenrp@dedecms.com":
+                - /url: mailto:dbenrp@dedecms.com
             - cell "dbenrp@dedecms.com":
-              - link "dbenrp@dedecms.com"
+              - link "dbenrp@dedecms.com":
+                - /url: mailto:dbenrp@dedecms.com
             - cell
             - cell /Nov \\d+, \\d+/
             - cell
@@ -60,31 +68,39 @@ test('pagination behaviour', async ({ page }) => {
           - row /Drusi Shortcliffe dshortcliffero@wordpress\\.org dshortcliffero@wordpress\\.org \\d+-\\d+-\\d+ Nov \\d+, \\d+ Admin User/:
             - cell "Drusi Shortcliffe"
             - cell "dshortcliffero@wordpress.org":
-              - link "dshortcliffero@wordpress.org"
+              - link "dshortcliffero@wordpress.org":
+                - /url: mailto:dshortcliffero@wordpress.org
             - cell "dshortcliffero@wordpress.org":
-              - link "dshortcliffero@wordpress.org"
+              - link "dshortcliffero@wordpress.org":
+                - /url: mailto:dshortcliffero@wordpress.org
             - cell /\\d+-\\d+-\\d+/:
-              - link /\\d+-\\d+-\\d+/
+              - link /\\d+-\\d+-\\d+/:
+                - /url: tel:227-793-7853
             - cell /Nov \\d+, \\d+/
             - cell
             - cell "Admin User"
           - row /Koo Stuke kstukern@ft\\.com kstukern@ft\\.com \\d+-\\d+-\\d+ Nov \\d+, \\d+ Admin User/:
             - cell "Koo Stuke"
             - cell "kstukern@ft.com":
-              - link "kstukern@ft.com"
+              - link "kstukern@ft.com":
+                - /url: mailto:kstukern@ft.com
             - cell "kstukern@ft.com":
-              - link "kstukern@ft.com"
+              - link "kstukern@ft.com":
+                - /url: mailto:kstukern@ft.com
             - cell /\\d+-\\d+-\\d+/:
-              - link /\\d+-\\d+-\\d+/
+              - link /\\d+-\\d+-\\d+/:
+                - /url: tel:297-884-7265
             - cell /Nov \\d+, \\d+/
             - cell
             - cell "Admin User"
           - row /Lillis Atyea latyearm@si\\.edu latyearm@si\\.edu Nov \\d+, \\d+ Admin User/:
             - cell "Lillis Atyea"
             - cell "latyearm@si.edu":
-              - link "latyearm@si.edu"
+              - link "latyearm@si.edu":
+                - /url: mailto:latyearm@si.edu
             - cell "latyearm@si.edu":
-              - link "latyearm@si.edu"
+              - link "latyearm@si.edu":
+                - /url: mailto:latyearm@si.edu
             - cell
             - cell /Nov \\d+, \\d+/
             - cell
@@ -92,42 +108,53 @@ test('pagination behaviour', async ({ page }) => {
           - row /Chuck De Micoli cdemicolirl@meetup\\.com cdemicolirl@meetup\\.com \\d+-\\d+-\\d+ Nov \\d+, \\d+ Admin User/:
             - cell "Chuck De Micoli"
             - cell "cdemicolirl@meetup.com":
-              - link "cdemicolirl@meetup.com"
+              - link "cdemicolirl@meetup.com":
+                - /url: mailto:cdemicolirl@meetup.com
             - cell "cdemicolirl@meetup.com":
-              - link "cdemicolirl@meetup.com"
+              - link "cdemicolirl@meetup.com":
+                - /url: mailto:cdemicolirl@meetup.com
             - cell /\\d+-\\d+-\\d+/:
-              - link /\\d+-\\d+-\\d+/
+              - link /\\d+-\\d+-\\d+/:
+                - /url: tel:113-759-3621
             - cell /Nov \\d+, \\d+/
             - cell
             - cell "Admin User"
           - row /Sarah Boatwright sboatwrightrk@un\\.org sboatwrightrk@un\\.org \\d+-\\d+-\\d+ Nov \\d+, \\d+ Admin User/:
             - cell "Sarah Boatwright"
             - cell "sboatwrightrk@un.org":
-              - link "sboatwrightrk@un.org"
+              - link "sboatwrightrk@un.org":
+                - /url: mailto:sboatwrightrk@un.org
             - cell "sboatwrightrk@un.org":
-              - link "sboatwrightrk@un.org"
+              - link "sboatwrightrk@un.org":
+                - /url: mailto:sboatwrightrk@un.org
             - cell /\\d+-\\d+-\\d+/:
-              - link /\\d+-\\d+-\\d+/
+              - link /\\d+-\\d+-\\d+/:
+                - /url: tel:250-464-1925
             - cell /Nov \\d+, \\d+/
             - cell
             - cell "Admin User"
           - row /Felicdad Buddle fbuddlerj@google\\.com\\.au fbuddlerj@google\\.com\\.au \\d+-\\d+-\\d+ Nov \\d+, \\d+ Admin User/:
             - cell "Felicdad Buddle"
             - cell "fbuddlerj@google.com.au":
-              - link "fbuddlerj@google.com.au"
+              - link "fbuddlerj@google.com.au":
+                - /url: mailto:fbuddlerj@google.com.au
             - cell "fbuddlerj@google.com.au":
-              - link "fbuddlerj@google.com.au"
+              - link "fbuddlerj@google.com.au":
+                - /url: mailto:fbuddlerj@google.com.au
             - cell /\\d+-\\d+-\\d+/:
-              - link /\\d+-\\d+-\\d+/
+              - link /\\d+-\\d+-\\d+/:
+                - /url: tel:485-152-6401
             - cell /Nov \\d+, \\d+/
             - cell
             - cell "Admin User"
           - row /Bibbye Tonkinson btonkinsonri@yolasite\\.com btonkinsonri@yolasite\\.com Nov \\d+, \\d+ Admin User/:
             - cell "Bibbye Tonkinson"
             - cell "btonkinsonri@yolasite.com":
-              - link "btonkinsonri@yolasite.com"
+              - link "btonkinsonri@yolasite.com":
+                - /url: mailto:btonkinsonri@yolasite.com
             - cell "btonkinsonri@yolasite.com":
-              - link "btonkinsonri@yolasite.com"
+              - link "btonkinsonri@yolasite.com":
+                - /url: mailto:btonkinsonri@yolasite.com
             - cell
             - cell /Nov \\d+, \\d+/
             - cell
