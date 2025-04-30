@@ -32,13 +32,13 @@
             useCommon('border_radius.sm'),
             useCommon('border_color'),
             Typography.codespan,
-            useTheme('typography.codespan')
+            useTheme('typography.codespan'),
         ),
         blockquote: cn(
             useCommon('border_color'),
             useCommon('border_radius.lg'),
             Blocks.blockquote,
-            useTheme('typography.blockquote')
+            useTheme('typography.blockquote'),
         ),
     };
 
@@ -116,7 +116,7 @@
         if (!browser) {
             const JSDOM = (await import('jsdom')).JSDOM;
             const window = new JSDOM('').window;
-            const purify = dom(window);
+            const purify = dom({ ...window, trustedTypes: undefined });
             return purify.sanitize(marked(content) as string);
         }
         /**

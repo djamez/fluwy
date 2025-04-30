@@ -10,11 +10,11 @@
     }
 
     const isMode = (current: 'light' | 'dark' | 'system') => {
-        return $userPrefersMode === current;
+        return userPrefersMode.current === current;
     };
 
     const getIconForSelectedMode = $derived(() => {
-        switch ($userPrefersMode) {
+        switch (userPrefersMode.current) {
             case 'light':
                 return 'ph:sun';
             case 'dark':
